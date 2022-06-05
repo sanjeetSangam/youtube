@@ -1,0 +1,24 @@
+.sidebar {
+  width: 270px;
+}
+
+.main__menus {
+  margin-top: 1rem;
+}
+
+.main__menus > div {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.8rem 2rem;
+  font-size: 1.3rem;
+  transition: 0.2s ease-in-out;
+}
+
+.main__menus > div:hover {
+  background: #e5e5e5;
+  cursor: pointer;
+}
+.main__menus > div > p {
+  font-size: 0.9rem;
+}
