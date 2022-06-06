@@ -22,7 +22,8 @@ export const HomeContent = () => {
   const [initialData, setInitialData] = useState([]);
   const [channelAvatar, setChannelAvatar] = useState([]);
 
-  var key = "AIzaSyD94-l0dwOKXzjVuN_OwMkcOrveZz3OXWo";
+  var key = import.meta.env.VITE_API_KEY;
+  // console.log({ key: key });
 
   const popularData = async () => {
     const { data } = await axios.get(
@@ -37,20 +38,20 @@ export const HomeContent = () => {
   }, []);
 
   useEffect(() => {
-    if (initialData.length === 10) {
+    if (initialData.length === 25) {
       setChannelAvatar([]);
 
       initialData.map((item, i) => {
         axios
           .get(
-            `https://youtube.googleapis.com/youtube/v3/channels?part=snippet%2CcontentDetails%2Cstatistics&id=${item.snippet.channelId}&key=AIzaSyD94-l0dwOKXzjVuN_OwMkcOrveZz3OXWo`
+            `https://youtube.googleapis.com/youtube/v3/channels?part=snippet%2CcontentDetails%2Cstatistics&id=${item.snippet.channelId}&key=${key}`
           )
           .then(({ data }) => {
             setChannelAvatar((prev) => [...prev, data]);
           });
       });
     }
-  }, [initialData.length === 10]);
+  }, [initialData.length === 25]);
 
   const getProfile = (video) => {
     let nameAv = channelAvatar.find(({ items }) => {

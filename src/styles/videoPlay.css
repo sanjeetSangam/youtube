@@ -14,10 +14,19 @@
 
 .play {
   margin-top: 1rem;
+  overflow-y: auto;
+  height: 90vh;
 }
 
 .related {
   margin-top: 1rem;
+  overflow-y: auto;
+  height: 90vh;
+}
+
+.play::-webkit-scrollbar,
+.related::-webkit-scrollbar {
+  display: none;
 }
 
 .video__details {

@@ -12,10 +12,11 @@ export const RelatedVideo = () => {
     if (id) {
       axios
         .get(
-          `https://www.googleapis.com/youtube/v3/search?part=snippet&relatedToVideoId=${id}&type=video&key=AIzaSyCIWZm0KYz1ipQIJEEDTbDyX2-kbzPTvbg&maxResults=25`
+          `https://www.googleapis.com/youtube/v3/search?part=snippet&relatedToVideoId=${id}&type=video&key=${
+            import.meta.env.VITE_API_KEY
+          }&maxResults=15`
         )
         .then(({ data }) => {
-          console.log(data);
           setRelated(data.items);
         });
     }

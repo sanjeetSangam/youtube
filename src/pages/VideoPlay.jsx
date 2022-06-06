@@ -11,7 +11,7 @@ export const VideoPlay = () => {
   const [channelData, setChannelData] = useState({});
   const [uploadTime, setUploadTime] = useState(undefined);
   const { id } = useParams();
-  var key = "AIzaSyCIWZm0KYz1ipQIJEEDTbDyX2-kbzPTvbg";
+  var key = import.meta.env.VITE_API_KEY;
 
   useEffect(() => {
     if (id) {
@@ -32,7 +32,7 @@ export const VideoPlay = () => {
 
       axios
         .get(
-          `https://youtube.googleapis.com/youtube/v3/channels?part=snippet%2CcontentDetails%2Cstatistics&id=${videoData.items[0].snippet.channelId}&key=AIzaSyD94-l0dwOKXzjVuN_OwMkcOrveZz3OXWo`
+          `https://youtube.googleapis.com/youtube/v3/channels?part=snippet%2CcontentDetails%2Cstatistics&id=${videoData.items[0].snippet.channelId}&key=${key}`
         )
         .then(({ data }) => {
           setChannelData(data);
