@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import { AiOutlineMenu } from "react-icons/ai";
 import { RiVideoAddLine } from "react-icons/ri";
@@ -15,6 +15,12 @@ import { useNavigate } from "react-router-dom";
 
 export const Navbar = () => {
   const navigate = useNavigate();
+  const [keyword, setKeyword] = useState(undefined);
+
+  const handleKeyword = (e) => {
+    e.preventDefault();
+    navigate(`/search/${keyword}`);
+  };
   return (
     <nav>
       <div className="logo">
@@ -27,9 +33,13 @@ export const Navbar = () => {
         />
       </div>
       <div className="search">
-        <form action="">
-          <input type="text" placeholder="Search" />
-          <button>
+        <form action="" onSubmit={handleKeyword}>
+          <input
+            type="text"
+            placeholder="Search"
+            onChange={(e) => setKeyword(e.target.value)}
+          />
+          <button onClick={handleKeyword}>
             <BiSearch />
           </button>
           <BsFillMicFill style={{ cursor: "pointer" }} />
